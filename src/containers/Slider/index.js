@@ -24,16 +24,15 @@ const Slider = () => {
     const timeout = setTimeout(() => nextCard(), 5000);
     return () => window.clearInterval(timeout);
   });
-  
+
   return (
     <div className="SlideCardList">
       {byDateDesc?.map((event, idx) => (
         <Fragment key={event.date}>
           <div
             key={event.title}
-            className={`SlideCard SlideCard--${
-              index === idx ? "display" : "hide"
-            }`}
+            className={`SlideCard SlideCard--${index === idx ? "display" : "hide"
+              }`}
           >
             <img src={event.cover} alt="forum" />
             <div className="SlideCard__descriptionContainer">
@@ -48,12 +47,12 @@ const Slider = () => {
             <div className="SlideCard__pagination">
               {byDateDesc.map((_, radioIdx) => (
                 <input
-                  data-testid = "bullet-testid"
+                  data-testid="bullet-testid"
                   key={`${_.date}`}
                   type="radio"
                   name="radio-button"
                   checked={index === radioIdx}
-		              readOnly
+                  readOnly
                   onClick={() => handleClick(radioIdx)}
                 />
               ))}
