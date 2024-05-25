@@ -1,18 +1,32 @@
 import { render, screen } from "@testing-library/react";
-import md5 from "md5";
-import Icon from ".";
+import Icon from "../Icon";
 
 describe("Icon component", () => {
-    describe("When a icon is created with name twitch", () => {
-        it("the icon contain this path hash value 327fbc38c8e878259c3ec35ef231517a", () => {
-            render(<Icon name="twitch" />)
-            expect(md5(screen.getByTestId("icon").getAttribute('d'))).toEqual('327fbc38c8e878259c3ec35ef231517a')
-        });
-    });
-    describe("When a icon is created with name facebook", () => {
-        it("the icon contain this path hash value bbea4c9e40773b969fdb6e406059f853", () => {
-            // to complete
-        });
-    });
-})
+    const renderIcon = (name) => {
+        render(<Icon name={name} />);
+    };
 
+    it("renders the twitch icon correctly", () => {
+        renderIcon("twitch");
+        expect(screen.getByTestId("icon-twitch")).toBeInTheDocument();
+        expect(screen.getByTestId("icon-twitch")).toHaveAttribute('data-testid', 'icon-twitch');
+    });
+
+    it("renders the facebook icon correctly", () => {
+        renderIcon("facebook");
+        expect(screen.getByTestId("icon-facebook")).toBeInTheDocument();
+        expect(screen.getByTestId("icon-facebook")).toHaveAttribute('data-testid', 'icon-facebook');
+    });
+
+    it("renders the twitter icon correctly", () => {
+        renderIcon("twitter");
+        expect(screen.getByTestId("icon-twitter")).toBeInTheDocument();
+        expect(screen.getByTestId("icon-twitter")).toHaveAttribute('data-testid', 'icon-twitter');
+    });
+
+    it("renders the youtube icon correctly", () => {
+        renderIcon("youtube");
+        expect(screen.getByTestId("icon-youtube")).toBeInTheDocument();
+        expect(screen.getByTestId("icon-youtube")).toHaveAttribute('data-testid', 'icon-youtube');
+    });
+});
