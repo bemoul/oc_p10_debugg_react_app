@@ -29,16 +29,29 @@ describe("When Form is created", () => {
 
 
 describe("When a page is created", () => {
-  it("a list of events is displayed", () => {
-    // to implement
-  })
-  it("a list a people is displayed", () => {
-    // to implement
-  })
-  it("a footer is displayed", () => {
-    // to implement
-  })
-  it("an event card, with the last event, is displayed", () => {
-    // to implement
-  })
+  it("a list of events is displayed", async () => {
+    render(<Home />);
+    const eventList = screen.getByTestId("eventcard-test");
+    const cardElement = screen.getByTestId("eventcard-test");
+    expect(eventList).toBeInTheDocument();
+    expect(cardElement).toBeInTheDocument();
+  });
+  it("a list a people is displayed", async () => {
+    render(<Home />);
+    const peopleList = screen.getByTestId("people-list");
+    expect(peopleList).toBeInTheDocument();
+    expect(screen.getByText("CEO"));
+    expect(screen.getByText("Directeur marketing"));
+    expect(screen.getByText("CXO"));
+  });
+  it("a footer is displayed", async () => {
+    render(<Home />);
+    const footerTest = screen.getByTestId("footer-testid");
+    expect(footerTest).toBeInTheDocument();
+    expect(screen.getByText("Notre dernière prestation"));
+    expect(screen.getByText("Contactez-nous"));
+  });
+  it("an event card, with the last event, is displayed", async () => {
+    //
+  });
 });
